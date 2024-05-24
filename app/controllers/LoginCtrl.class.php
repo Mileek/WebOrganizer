@@ -7,6 +7,8 @@ use app\forms\LoginForm;
 use \core\ParamUtils;
 use \core\Messages;
 use \core\Message;
+use core\RoleUtils;
+use core\App;
 
 class LoginCtrl
 {
@@ -61,6 +63,7 @@ class LoginCtrl
                 //$_SESSION['user'] = serialize($user);
                 // dodaj rolę użytkownikowi (jak wiemy, zapisane też w sesji)
                 //addRole($user->role);
+                RoleUtils::addRole('admin');
 
             } else if ($this->form->login == "user" && $this->form->pass == "user") {
 
@@ -70,6 +73,7 @@ class LoginCtrl
                 //$_SESSION['user'] = serialize($user);
                 // dodaj rolę użytkownikowi (jak wiemy, zapisane też w sesji)
                 //addRole($user->role);
+                RoleUtils::addRole('user');
 
             } else {
                 $this->messages->addMessage(new Message('Niepoprawny login lub hasło', Message::ERROR));
@@ -79,37 +83,45 @@ class LoginCtrl
         return !$this->messages->isError();
     }
 
-    // public function action_login()
-    // {
+    public function action_generateView()
+    {
+        App::getSmarty()->display("LoginView.tpl");
+    }
 
-    //     $this->getParams();
-
-    //     if ($this->validate()) {
-    //         //zalogowany => przekieruj na stronę główną, gdzie uruchomiona zostanie domyślna akcja
-    //         header("Location: " . getConf()->app_url . "/");
-    //     } else {
-    //         //niezalogowany => wyświetl stronę logowania
-    //         $this->generateView();
-    //     }
-
-    // }
-
-    // public function action_logout()
-    // {
-    //     // 1. zakończenie sesji - tylko kończymy, jesteśmy już podłączeni w init.php
-    //     session_destroy();
-
-    //     // 2. wyświetl stronę logowania z informacją
-    //     getMessages()->addInfo('Poprawnie wylogowano z systemu');
-
-    //     $this->generateView();
-    // }
-
-    public function generateView()
+    public function action_login()
     {
 
-        getSmarty()->assign('page_title', 'Strona logowania');
-        getSmarty()->assign('form', $this->form);
-        getSmarty()->display('LoginView.tpl');
+        $this->getParams();
+
+        if ($this->validate()) {
+            //zalogowany => przekieruj na stronę główną, gdzie uruchomiona zostanie domyślna akcja
+            // \core\RoleUtils::addRole($rola);
+            App::getRouter()->redirectTo("showdata");
+        } else {
+            //niezalogowany => wyświetl stronę logowania
+            // $this->generateView();
+            $this->messages->addMessage(new Message('Nie poprawny login i/lub hasło.', Message::ERROR));
+        }
+
     }
+
+    public function action_logout()
+    {
+        // 1. zakończenie sesji - tylko kończymy, jesteśmy już podłączeni w init.php
+        session_destroy();
+
+
+        // 2. wyświetl stronę logowania z informacją
+        $this->messages->addMessage(new Message('Poprawnie wylogowano z systemu', Message::INFO));
+
+        App::getRouter()->redirectTo("hello");
+    }
+
+    // public function generateView()
+    // {
+
+    //     getSmarty()->assign('page_title', 'Strona logowania');
+    //     getSmarty()->assign('form', $this->form);
+    //     getSmarty()->display('LoginView.tpl');
+    // }
 }
