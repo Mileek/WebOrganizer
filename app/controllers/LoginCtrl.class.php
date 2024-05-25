@@ -26,7 +26,7 @@ class LoginCtrl
     {
         // 1. pobranie parametrów
         $this->form->login = ParamUtils::getFromRequest('login');
-        $this->form->pass = ParamUtils::getFromRequest('pass');
+        $this->form->pass = ParamUtils::getFromRequest('password');
     }
 
     public function validate()
@@ -56,23 +56,9 @@ class LoginCtrl
             // sprawdzenie, czy dane logowania poprawne
             // (takie informacje najczęściej przechowuje się w bazie danych)
             if ($this->form->login == "admin" && $this->form->pass == "admin") {
-
-                //sesja już rozpoczęta w init.php, więc działamy ...
-                //$user = new User($this->form->login, 'admin');
-                // zaipsz obiekt użytkownika w sesji
-                //$_SESSION['user'] = serialize($user);
-                // dodaj rolę użytkownikowi (jak wiemy, zapisane też w sesji)
-                //addRole($user->role);
                 RoleUtils::addRole('admin');
 
             } else if ($this->form->login == "user" && $this->form->pass == "user") {
-
-                //sesja już rozpoczęta w init.php, więc działamy ...
-                //$user = new User($this->form->login, 'user');
-                // zaipsz obiekt użytkownika w sesji
-                //$_SESSION['user'] = serialize($user);
-                // dodaj rolę użytkownikowi (jak wiemy, zapisane też w sesji)
-                //addRole($user->role);
                 RoleUtils::addRole('user');
 
             } else {
@@ -95,11 +81,10 @@ class LoginCtrl
 
         if ($this->validate()) {
             //zalogowany => przekieruj na stronę główną, gdzie uruchomiona zostanie domyślna akcja
-            // \core\RoleUtils::addRole($rola);
             App::getRouter()->redirectTo("showdata");
         } else {
             //niezalogowany => wyświetl stronę logowania
-            // $this->generateView();
+            $this->action_generateView();
             $this->messages->addMessage(new Message('Nie poprawny login i/lub hasło.', Message::ERROR));
         }
 
@@ -110,18 +95,9 @@ class LoginCtrl
         // 1. zakończenie sesji - tylko kończymy, jesteśmy już podłączeni w init.php
         session_destroy();
 
-
         // 2. wyświetl stronę logowania z informacją
         $this->messages->addMessage(new Message('Poprawnie wylogowano z systemu', Message::INFO));
 
         App::getRouter()->redirectTo("hello");
     }
-
-    // public function generateView()
-    // {
-
-    //     getSmarty()->assign('page_title', 'Strona logowania');
-    //     getSmarty()->assign('form', $this->form);
-    //     getSmarty()->display('LoginView.tpl');
-    // }
 }
