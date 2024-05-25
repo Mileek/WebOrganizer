@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-05-24 21:28:04
+/* Smarty version 4.3.4, created on 2024-05-25 11:22:33
   from 'C:\xampp\htdocs\WebOrganizer\app\views\LoginView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6650ea44ebaf56_06748054',
+  'unifunc' => 'content_6651add9ce7731_79168172',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f72db902e585f6b2b407942b5f43722c93c2d801' => 
     array (
       0 => 'C:\\xampp\\htdocs\\WebOrganizer\\app\\views\\LoginView.tpl',
-      1 => 1716578879,
+      1 => 1716628941,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6650ea44ebaf56_06748054 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6651add9ce7731_79168172 (Smarty_Internal_Template $_smarty_tpl) {
 ?><head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/../assets/loginStyle.css" />
+/../assets/LoginStyle.css" />
     <?php echo '<script'; ?>
  src="https://kit.fontawesome.com/0eabfb7d9f.js" crossorigin="anonymous"><?php echo '</script'; ?>
 >

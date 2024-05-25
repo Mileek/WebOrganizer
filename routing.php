@@ -17,5 +17,5 @@ Utils::addRoute('hello', 'HelloCtrl');
 Utils::addRoute('hello', 'HelloCtrl');
 //Utils::addRoute('action_name', 'controller_class_name');
 
-Utils::addRoute('showdata', 'DataCtrl', ["user", "admin"]);
+Utils::addRoute('showTasks', 'ToDoCtrl', ["user", "admin"]);
 Utils::addRoute('cleardata', 'DataCtrl', ["admin"]);

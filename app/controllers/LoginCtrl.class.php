@@ -81,7 +81,7 @@ class LoginCtrl
 
         if ($this->validate()) {
             //zalogowany => przekieruj na stronę główną, gdzie uruchomiona zostanie domyślna akcja
-            App::getRouter()->redirectTo("showdata");
+            App::getRouter()->redirectTo("showTasks");
         } else {
             //niezalogowany => wyświetl stronę logowania
             $this->action_generateView();
