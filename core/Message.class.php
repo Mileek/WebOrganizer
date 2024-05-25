@@ -2,7 +2,8 @@
 
 namespace core;
 
-class Message {
+class Message
+{
 
     public $text;
     public $type;
@@ -11,28 +12,36 @@ class Message {
     const WARNING = 1;
     const INFO = 0;
 
-    public function __construct($text, $type) {
+    public function __construct($text, $type)
+    {
         $this->text = $text;
         $this->type = $type;
     }
 
-    public function isError() {
+    public function isError()
+    {
         return $this->type == Message::ERROR;
     }
 
-    public function isWarning() {
+    public function isWarning()
+    {
         return $this->type == Message::WARNING;
     }
 
-    public function isInfo() {
+    public function isInfo()
+    {
         return $this->type == Message::INFO;
     }
 
-    public function getTypeName() {
-        switch ($type) {
-            case Message::ERROR: return 'error';
-            case Message::WARNING: return 'warning';
-            case Message::INFO: return 'info';
+    public function getTypeName()
+    {
+        switch ($this->type) {
+            case Message::ERROR:
+                return 'error';
+            case Message::WARNING:
+                return 'warning';
+            case Message::INFO:
+                return 'info';
         }
     }
 
