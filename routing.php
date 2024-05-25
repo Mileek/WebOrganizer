@@ -14,8 +14,11 @@ Utils::addRoute('login', 'LoginCtrl');
 Utils::addRoute('logout', 'LoginCtrl');
 
 Utils::addRoute('hello', 'HelloCtrl');
-Utils::addRoute('hello', 'HelloCtrl');
 //Utils::addRoute('action_name', 'controller_class_name');
 
+//ToDoCtrl
 Utils::addRoute('showTasks', 'ToDoCtrl', ["user", "admin"]);
+Utils::addRoute('addTask', 'ToDoCtrl', ["user", "admin"]);
+Utils::addRoute('markCompleted', 'ToDoCtrl', ["user", "admin"]);
+Utils::addRoute('removeTask', 'ToDoCtrl', ["user", "admin"]);
 Utils::addRoute('cleardata', 'DataCtrl', ["admin"]);

@@ -1,10 +1,10 @@
 html,
 body {
-  background-color: #f2f2f2;
+  background-color: #ffffff;
 }
 
 .todo-headline {
-  background-color: #663300;
+  background-color: #1249a1;
   color: #fff;
   text-align: center;
   text-transform: uppercase;
@@ -17,11 +17,11 @@ body {
 .todo-container {
   background-color: #fff;
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 1200px;
   position: relative;
 }
 .todo-container:before, .todo-container:after {
-  border-left: 1px solid #ff8c00;
+  border-left: 1px solid #d44343;
   content: "";
   display: block;
   position: absolute;
@@ -58,6 +58,21 @@ body {
   width: 100%;
   position: relative;
   z-index: 1;
+  text-align: left;
+  white-space: normal;
+}
+
+.todo-desc-right {
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: normal;
+  outline: none;
+  padding: 15px 80px 15px 80px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  text-align: right;
 }
 
 .todo-input {
@@ -70,16 +85,17 @@ body {
   font-style: italic;
 }
 
-.todo-remove, .todo-toggle {
-  color: #ccc;
+.todo-toggle {
+  color: #aaaaaa;
   cursor: pointer;
-  display: block;
   font-size: 24px;
-  width: 60px;
+  width: 40px;
   height: 40px;
-  position: absolute;
+  position: relative;
   top: 18px;
   z-index: 2;
+  background: transparent;
+  border: none;
 }
 
 .todo-toggle {
@@ -92,8 +108,17 @@ body {
 
 .todo-remove {
   display: none;
+  font-size: 24px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  top: 18px;
+  position: relative;
   color: red;
   right: 20px;
+  z-index: 2;
+  background: transparent;
+  border: none;
 }
 
 .todo-remove-all {
@@ -105,7 +130,8 @@ body {
   padding: 0;
 }
 .todo-list li {
-  display: block;
+  display: flex;
+  justify-content: space-between;
 }
 
 .todo {

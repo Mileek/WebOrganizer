@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-05-25 12:26:22
+/* Smarty version 4.3.4, created on 2024-05-25 22:28:15
   from 'C:\xampp\htdocs\WebOrganizer\app\views\ToDoView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6651bcce4ec734_32560856',
+  'unifunc' => 'content_665249dfc8cfe1_19776086',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b3de89403d11c7afe65af1c92edf74c44491d093' => 
     array (
       0 => 'C:\\xampp\\htdocs\\WebOrganizer\\app\\views\\ToDoView.tpl',
-      1 => 1716632776,
+      1 => 1716668704,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6651bcce4ec734_32560856 (Smarty_Internal_Template $_smarty_tpl) {
+function content_665249dfc8cfe1_19776086 (Smarty_Internal_Template $_smarty_tpl) {
 ?><head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
@@ -36,8 +36,11 @@ function content_6651bcce4ec734_32560856 (Smarty_Internal_Template $_smarty_tpl)
     <h2 class="todo-headline">Todos</h2>
     <div class="todo-init">
 
-        <input id="todo-create" class="todo-input" type="text" placeholder="What needs to be done?" autofocus>
-
+        <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+addTask" method="post">
+            <input id="todo-create" class="todo-input" type="text" name="task" placeholder="What needs to be done?"
+                autofocus>
+        </form>
         <span id="todo-toggle-all" class="todo-toggle todo-toggle-all glyphicon glyphicon-ok-sign"
             title="Toggle all todos"></span>
 
@@ -52,15 +55,30 @@ $_smarty_tpl->tpl_vars['item']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['item']->value) {
 $_smarty_tpl->tpl_vars['item']->do_else = false;
 ?>
-            <li style="margin-bottom: 20px; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-                <strong>Id:</strong> <?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
-<br />
-                <strong>Kwota:</strong> <?php echo $_smarty_tpl->tpl_vars['item']->value['IsCompleted'];?>
-<br />
-                <strong>Rata:</strong> <?php echo $_smarty_tpl->tpl_vars['item']->value['Description'];?>
-<br />
-                <strong>Data:</strong> <?php echo $_smarty_tpl->tpl_vars['item']->value['Date'];?>
-<br />
+            <li>
+                <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+markCompleted" method="post">
+                    <input type="hidden" name="id" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
+">
+                    <input type="hidden" name="currentComplete" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['IsCompleted'];?>
+">
+                    <?php if ($_smarty_tpl->tpl_vars['item']->value['IsCompleted']) {?>
+                        <button type="submit" class="todo-toggle todo-toggle-complete fas fa-check"></button>
+                    <?php } else { ?>
+                        <button type="submit" class="todo-toggle fas fa-check"></button>
+                    <?php }?>
+                </form>
+
+                <span class="todo-desc"><?php echo $_smarty_tpl->tpl_vars['item']->value['Description'];?>
+</span>
+                <span class="todo-desc-right"><?php echo $_smarty_tpl->tpl_vars['item']->value['Date'];?>
+</span>
+                <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
+removeTask" method="post">
+                    <input type="hidden" name="id" value="<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
+">
+                    <button class="todo-remove fa-solid fa-xmark"></button>
+                </form>
             </li>
         <?php
 }
@@ -74,7 +92,14 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 <th>Completed</th>
                 <th>Incomplete</th>
             </tr>
-            <tr></tr>
+            <tr>
+                <td><?php echo $_smarty_tpl->tpl_vars['total']->value;?>
+</td>
+                <td><?php echo $_smarty_tpl->tpl_vars['completed']->value;?>
+</td>
+                <td><?php echo $_smarty_tpl->tpl_vars['incomplete']->value;?>
+</td>
+            </tr>
         </table>
     </footer>
 </section>
