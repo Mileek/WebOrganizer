@@ -42,27 +42,29 @@ class LoginCtrl
 
             // sprawdzenie, czy potrzebne wartości zostały przekazane
             if ($this->form->login == "") {
-                $this->messages->addMessage(new Message('Nie podano loginu', Message::ERROR));
+                $this->messages->addMessage(new Message('No username provided', Message::ERROR));
             }
 
             if ($this->form->pass == "") {
-                $this->messages->addMessage(new Message('Nie podano hasła', Message::ERROR));
+                $this->messages->addMessage(new Message('No password provided', Message::ERROR));
             }
         }
 
-        //nie ma sensu walidować dalej, gdy brak wartości
         if (!$this->messages->isError()) {
 
-            // sprawdzenie, czy dane logowania poprawne
-            // (takie informacje najczęściej przechowuje się w bazie danych)
-            if ($this->form->login == "admin" && $this->form->pass == "admin") {
-                RoleUtils::addRole('admin');
+            $user = App::getDB()->select("users", "*", [
+                "OR" => [
+                    "UserName" => $this->form->login,
+                    "Email" => $this->form->login,
+                ],
+            ]);
 
-            } else if ($this->form->login == "user" && $this->form->pass == "user") {
-                RoleUtils::addRole('user');
+            // sprawdzenie, czy dane logowania poprawne
+            if ($user && $this->form->pass == $user[0]['Password']) {
+                RoleUtils::addRole('admin');//Każdy jest adminem, można to poprawić, ale narazie nie mam obsługi dla usera/admina
 
             } else {
-                $this->messages->addMessage(new Message('Niepoprawny login lub hasło', Message::ERROR));
+                $this->messages->addMessage(new Message('Incorrect login or password', Message::ERROR));
             }
         }
 
@@ -76,7 +78,6 @@ class LoginCtrl
 
     public function action_login()
     {
-
         $this->getParams();
 
         if ($this->validate()) {
@@ -85,7 +86,7 @@ class LoginCtrl
         } else {
             //niezalogowany => wyświetl stronę logowania
             $this->action_generateView();
-            $this->messages->addMessage(new Message('Nie poprawny login i/lub hasło.', Message::ERROR));
+            $this->messages->addMessage(new Message('Incorrect login and/or password', Message::ERROR));
         }
 
     }
@@ -96,7 +97,7 @@ class LoginCtrl
         session_destroy();
 
         // 2. wyświetl stronę logowania z informacją
-        $this->messages->addMessage(new Message('Poprawnie wylogowano z systemu', Message::INFO));
+        $this->messages->addMessage(new Message('Successfully logged out of the ToDo', Message::INFO));
 
         App::getRouter()->redirectTo("generateView");
     }

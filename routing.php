@@ -8,13 +8,15 @@ App::getRouter()->setDefaultRoute('generateView'); #default action
 //App::getRouter()->setLoginRoute('accessdenied'); #action to forward if no permissions
 //App::getRouter()->setLoginRoute('login'); #action to forward if no permissions
 
-
+//Login
 Utils::addRoute('generateView', 'LoginCtrl');
 Utils::addRoute('login', 'LoginCtrl');
 Utils::addRoute('logout', 'LoginCtrl');
 
-Utils::addRoute('hello', 'HelloCtrl');
-//Utils::addRoute('action_name', 'controller_class_name');
+//Register User
+Utils::addRoute('register', 'RegisterCtrl');
+Utils::addRoute('createUser', 'RegisterCtrl');
+
 
 //ToDoCtrl
 Utils::addRoute('showTasks', 'ToDoCtrl', ["user", "admin"]);
