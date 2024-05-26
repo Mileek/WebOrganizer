@@ -74,6 +74,9 @@ class RegisterCtrl
             'max_length' => 30,
             'validator_message' => 'Email should be between 3 and 30 characters',
         ]);
+        if (!$v->isLastOk()) {
+            $this->messages->addMessage(new Message('Email should be between 3 and 30 characters', Message::ERROR));
+        }
 
         $this->form->login = $v->validateFromRequest("login", [
             'trim' => true,
@@ -83,6 +86,9 @@ class RegisterCtrl
             'max_length' => 30,
             'validator_message' => 'Login can\'t exceed 30 characters and can\'t be shorter than 3',
         ]);
+        if (!$v->isLastOk()) {
+            $this->messages->addMessage(new Message('Login can\'t exceed 30 characters and can\'t be shorter than 3', Message::ERROR));
+        }
 
         $this->form->pass = $v->validateFromRequest("password", [
             'required' => true,
@@ -91,6 +97,9 @@ class RegisterCtrl
             'max_length' => 30,
             'validator_message' => 'Password can\'t exceed 30 characters and can\'t be shorter than 3',
         ]);
+        if (!$v->isLastOk()) {
+            $this->messages->addMessage(new Message('Password can\'t exceed 30 characters and can\'t be shorter than 3', Message::ERROR));
+        }
     }
 
     public function InsertToDB()
