@@ -1,13 +1,13 @@
 {extends file="Main.tpl"}
 
-{block name=contentToDo}
+{block name=contentImageToDo}
     <section id="app" class="todo-container">
-        <h2 class="todo-headline">Tasks To Do</h2>
+        <h2 class="todo-headline">Images To Do</h2>
         <div class="todo-init">
 
-            <form action="{$conf->action_url}addTask" method="post">
-                <input id="todo-create" class="todo-input" type="text" name="task" placeholder="What needs to be done?"
-                    autofocus>
+            <form action="{$conf->action_url}addImage" method="post">
+                <input id="todo-create" class="todo-input" type="text" name="url"
+                    placeholder="What beautiful image do you want to add?" autofocus>
             </form>
             <span id="todo-toggle-all" class="todo-toggle todo-toggle-all glyphicon glyphicon-ok-sign"
                 title="Toggle all todos"></span>
@@ -19,19 +19,9 @@
         <ul id="todo-list" class="todo-list">
             {foreach $data as $item}
                 <li>
-                    <form action="{$conf->action_url}markCompleted" method="post">
-                        <input type="hidden" name="id" value="{$item.id}">
-                        <input type="hidden" name="currentComplete" value="{$item.IsCompleted}">
-                        {if $item.IsCompleted}
-                            <button type="submit" class="todo-toggle todo-toggle-complete fas fa-check"></button>
-                        {else}
-                            <button type="submit" class="todo-toggle fas fa-check"></button>
-                        {/if}
-                    </form>
-
-                    <span class="todo-desc">{$item.Description}</span>
+                    <img src="{$item.Url}" alt="{$item.Url}" class="todo-image todo-desc">
                     <span class="todo-desc-right">{$item.Date}</span>
-                    <form action="{$conf->action_url}removeTask" method="post">
+                    <form action="{$conf->action_url}removeImage" method="post">
                         <input type="hidden" name="id" value="{$item.id}">
                         <button class="todo-remove fa-solid fa-xmark"></button>
                     </form>
@@ -43,13 +33,9 @@
             <table id="todo-stats" class="todo-stats">
                 <tr>
                     <th>Total</th>
-                    <th>Completed</th>
-                    <th>Incomplete</th>
                 </tr>
                 <tr>
                     <td>{$total}</td>
-                    <td>{$completed}</td>
-                    <td>{$incomplete}</td>
                 </tr>
             </table>
         </footer>
