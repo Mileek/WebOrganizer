@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-05-26 14:04:27
+/* Smarty version 4.3.4, created on 2024-05-26 18:00:44
   from 'C:\xampp\htdocs\WebOrganizer\app\views\ImageToDoView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6653254b76ceb1_95245715',
+  'unifunc' => 'content_66535caca90de4_34693583',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '72d2d2b602adceb547ffdbf04b9135730ee4c04f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\WebOrganizer\\app\\views\\ImageToDoView.tpl',
-      1 => 1716725066,
+      1 => 1716739183,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,23 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6653254b76ceb1_95245715 (Smarty_Internal_Template $_smarty_tpl) {
+function content_66535caca90de4_34693583 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_4762894726653254b75e571_43893369', 'contentImageToDo');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_182473684566535caca82c82_69342343', 'contentImageToDo');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "Main.tpl");
 }
 /* {block 'contentImageToDo'} */
-class Block_4762894726653254b75e571_43893369 extends Smarty_Internal_Block
+class Block_182473684566535caca82c82_69342343 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'contentImageToDo' => 
   array (
-    0 => 'Block_4762894726653254b75e571_43893369',
+    0 => 'Block_182473684566535caca82c82_69342343',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -45,17 +45,11 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
     <section id="app" class="todo-container">
         <h2 class="todo-headline">Images To Do</h2>
         <div class="todo-init">
-
             <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
 addImage" method="post">
                 <input id="todo-create" class="todo-input" type="text" name="url"
                     placeholder="What beautiful image do you want to add?" autofocus>
             </form>
-            <span id="todo-toggle-all" class="todo-toggle todo-toggle-all glyphicon glyphicon-ok-sign"
-                title="Toggle all todos"></span>
-
-            <span id="todo-remove-all" class="todo-remove todo-remove-all glyphicon glyphicon-remove-circle"
-                title="Remove all completed todos"></span>
         </div>
 
         <ul id="todo-list" class="todo-list">

@@ -1,20 +1,13 @@
 {extends file="Main.tpl"}
-{include file="MessageModal.tpl"}
 
 {block name=contentToDo}
     <section id="app" class="todo-container">
         <h2 class="todo-headline">Tasks To Do</h2>
         <div class="todo-init">
-
             <form action="{$conf->action_url}addTask" method="post">
                 <input id="todo-create" class="todo-input" type="text" name="task" placeholder="What needs to be done?"
                     autofocus>
             </form>
-            <span id="todo-toggle-all" class="todo-toggle todo-toggle-all glyphicon glyphicon-ok-sign"
-                title="Toggle all todos"></span>
-
-            <span id="todo-remove-all" class="todo-remove todo-remove-all glyphicon glyphicon-remove-circle"
-                title="Remove all completed todos"></span>
         </div>
 
         <ul id="todo-list" class="todo-list">

@@ -1,45 +1,42 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-05-26 15:52:11
+/* Smarty version 4.3.4, created on 2024-05-26 17:43:01
   from 'C:\xampp\htdocs\WebOrganizer\app\views\ToDoView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_66533e8b27e172_41290959',
+  'unifunc' => 'content_66535885372d94_22321781',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b3de89403d11c7afe65af1c92edf74c44491d093' => 
     array (
       0 => 'C:\\xampp\\htdocs\\WebOrganizer\\app\\views\\ToDoView.tpl',
-      1 => 1716731527,
+      1 => 1716737226,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
-    'file:MessageModal.tpl' => 1,
   ),
 ),false)) {
-function content_66533e8b27e172_41290959 (Smarty_Internal_Template $_smarty_tpl) {
+function content_66535885372d94_22321781 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
-<?php $_smarty_tpl->_subTemplateRender("file:MessageModal.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_193425990266533e8b266544_83040374', 'contentToDo');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_149600645066535885362454_43225947', 'contentToDo');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "Main.tpl");
 }
 /* {block 'contentToDo'} */
-class Block_193425990266533e8b266544_83040374 extends Smarty_Internal_Block
+class Block_149600645066535885362454_43225947 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'contentToDo' => 
   array (
-    0 => 'Block_193425990266533e8b266544_83040374',
+    0 => 'Block_149600645066535885362454_43225947',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -48,17 +45,11 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
     <section id="app" class="todo-container">
         <h2 class="todo-headline">Tasks To Do</h2>
         <div class="todo-init">
-
             <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
 addTask" method="post">
                 <input id="todo-create" class="todo-input" type="text" name="task" placeholder="What needs to be done?"
                     autofocus>
             </form>
-            <span id="todo-toggle-all" class="todo-toggle todo-toggle-all glyphicon glyphicon-ok-sign"
-                title="Toggle all todos"></span>
-
-            <span id="todo-remove-all" class="todo-remove todo-remove-all glyphicon glyphicon-remove-circle"
-                title="Remove all completed todos"></span>
         </div>
 
         <ul id="todo-list" class="todo-list">

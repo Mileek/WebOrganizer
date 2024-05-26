@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-05-26 14:38:47
+/* Smarty version 4.3.4, created on 2024-05-26 18:08:00
   from 'C:\xampp\htdocs\WebOrganizer\app\views\templates\MessageModal.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_66532d577e0648_99626069',
+  'unifunc' => 'content_66535e60b4cae0_35331728',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '82eb66375b0312aff1373755860f595492ba76e5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\WebOrganizer\\app\\views\\templates\\MessageModal.tpl',
-      1 => 1716726922,
+      1 => 1716739678,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_66532d577e0648_99626069 (Smarty_Internal_Template $_smarty_tpl) {
-?><!-- Modal -->
+function content_66535e60b4cae0_35331728 (Smarty_Internal_Template $_smarty_tpl) {
+?><!-- Modal, w pełni obsługiwany przez bootstrappa -->
 <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -33,6 +33,7 @@ function content_66532d577e0648_99626069 (Smarty_Internal_Template $_smarty_tpl)
                 </button>
             </div>
             <div class="modal-body">
+                <!-- Wyświetlanie komunikatów, specjalnie nie połączone || aby było lepiej czytelne -->
                 <?php if ($_smarty_tpl->tpl_vars['msgs']->value->isError()) {?>
                     <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['msgs']->value->getMessages(), 'msg');

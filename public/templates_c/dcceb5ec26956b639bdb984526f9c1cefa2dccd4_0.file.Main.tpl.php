@@ -1,26 +1,27 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-05-26 15:55:55
+/* Smarty version 4.3.4, created on 2024-05-26 17:26:54
   from 'C:\xampp\htdocs\WebOrganizer\app\views\templates\Main.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_66533f6b5c9d16_65937258',
+  'unifunc' => 'content_665354be90da73_98751964',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dcceb5ec26956b639bdb984526f9c1cefa2dccd4' => 
     array (
       0 => 'C:\\xampp\\htdocs\\WebOrganizer\\app\\views\\templates\\Main.tpl',
-      1 => 1716731570,
+      1 => 1716737211,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:MessageModal.tpl' => 1,
   ),
 ),false)) {
-function content_66533f6b5c9d16_65937258 (Smarty_Internal_Template $_smarty_tpl) {
+function content_665354be90da73_98751964 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -42,6 +43,9 @@ $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 >
 </head>
 
+<?php $_smarty_tpl->_subTemplateRender("file:MessageModal.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 <body>
     <div>
         <nav class="navi">
@@ -56,9 +60,6 @@ showImages">
                 <button class="navi__button">Images</button>
             </form>
             <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-showTasks"></form>
-            <button class="navi__button">PlaceHolder</button>
-            <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
 logout">
                 <button class="navi__button">Logout</button>
             </form>
@@ -66,11 +67,11 @@ logout">
 
 
         <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_109590014266533f6b5c76c6_90376816', 'contentToDo');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_402589795665354be90c188_00776088', 'contentToDo');
 ?>
 
         <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19584651766533f6b5c8c81_88598668', 'contentImageToDo');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_595666994665354be90cf41_64097924', 'contentImageToDo');
 ?>
 
     </div>
@@ -85,12 +86,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_19584651766533f6b5
 
 </html><?php }
 /* {block 'contentToDo'} */
-class Block_109590014266533f6b5c76c6_90376816 extends Smarty_Internal_Block
+class Block_402589795665354be90c188_00776088 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'contentToDo' => 
   array (
-    0 => 'Block_109590014266533f6b5c76c6_90376816',
+    0 => 'Block_402589795665354be90c188_00776088',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -100,12 +101,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 /* {/block 'contentToDo'} */
 /* {block 'contentImageToDo'} */
-class Block_19584651766533f6b5c8c81_88598668 extends Smarty_Internal_Block
+class Block_595666994665354be90cf41_64097924 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'contentImageToDo' => 
   array (
-    0 => 'Block_19584651766533f6b5c8c81_88598668',
+    0 => 'Block_595666994665354be90cf41_64097924',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
