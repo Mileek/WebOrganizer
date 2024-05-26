@@ -98,6 +98,6 @@ class LoginCtrl
         // 2. wyświetl stronę logowania z informacją
         $this->messages->addMessage(new Message('Poprawnie wylogowano z systemu', Message::INFO));
 
-        App::getRouter()->redirectTo("hello");
+        App::getRouter()->redirectTo("generateView");
     }
 }
