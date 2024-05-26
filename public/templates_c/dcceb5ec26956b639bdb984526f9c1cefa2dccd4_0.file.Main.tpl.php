@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-05-26 11:41:45
+/* Smarty version 4.3.4, created on 2024-05-26 13:57:37
   from 'C:\xampp\htdocs\WebOrganizer\app\views\templates\Main.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_665303d9801371_40047496',
+  'unifunc' => 'content_665323b1b76fb4_14194344',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dcceb5ec26956b639bdb984526f9c1cefa2dccd4' => 
     array (
       0 => 'C:\\xampp\\htdocs\\WebOrganizer\\app\\views\\templates\\Main.tpl',
-      1 => 1716716503,
+      1 => 1716724620,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_665303d9801371_40047496 (Smarty_Internal_Template $_smarty_tpl) {
+function content_665323b1b76fb4_14194344 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
 ?>
@@ -52,13 +52,12 @@ showTasks">
             </form>
 
             <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
-showTasks"></form>
-            <button class="navi__button" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/login">Login</button>
+showImages">
+                <button class="navi__button">Images</button>
+            </form>
             <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
 showTasks"></form>
-            <button class="navi__button" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
-/login">Login</button>
+            <button class="navi__button">PlaceHolder</button>
             <form action="<?php echo $_smarty_tpl->tpl_vars['conf']->value->action_url;?>
 logout">
                 <button class="navi__button">Logout</button>
@@ -67,7 +66,11 @@ logout">
 
 
         <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1786514959665303d97ffb37_16183236', 'contentToDo');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1131093569665323b1b74cd1_28738918', 'contentToDo');
+?>
+
+        <?php 
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_897049372665323b1b76280_35900650', 'contentImageToDo');
 ?>
 
     </div>
@@ -82,12 +85,12 @@ $_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1786514959665303d9
 
 </html><?php }
 /* {block 'contentToDo'} */
-class Block_1786514959665303d97ffb37_16183236 extends Smarty_Internal_Block
+class Block_1131093569665323b1b74cd1_28738918 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'contentToDo' => 
   array (
-    0 => 'Block_1786514959665303d97ffb37_16183236',
+    0 => 'Block_1131093569665323b1b74cd1_28738918',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
@@ -96,4 +99,19 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 }
 }
 /* {/block 'contentToDo'} */
+/* {block 'contentImageToDo'} */
+class Block_897049372665323b1b76280_35900650 extends Smarty_Internal_Block
+{
+public $subBlocks = array (
+  'contentImageToDo' => 
+  array (
+    0 => 'Block_897049372665323b1b76280_35900650',
+  ),
+);
+public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
+?>
+ <?php
+}
+}
+/* {/block 'contentImageToDo'} */
 }

@@ -18,10 +18,11 @@
                 <button class="navi__button">ToDo</button>
             </form>
 
+            <form action="{$conf->action_url}showImages">
+                <button class="navi__button">Images</button>
+            </form>
             <form action="{$conf->action_url}showTasks"></form>
-            <button class="navi__button" href="{$conf->app_url}/login">Login</button>
-            <form action="{$conf->action_url}showTasks"></form>
-            <button class="navi__button" href="{$conf->app_url}/login">Login</button>
+            <button class="navi__button">PlaceHolder</button>
             <form action="{$conf->action_url}logout">
                 <button class="navi__button">Logout</button>
             </form>
@@ -29,6 +30,7 @@
 
 
         {block name=contentToDo} {/block}
+        {block name=contentImageToDo} {/block}
     </div>
 
 

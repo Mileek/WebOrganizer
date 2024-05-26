@@ -23,4 +23,8 @@ Utils::addRoute('showTasks', 'ToDoCtrl', ["user", "admin"]);
 Utils::addRoute('addTask', 'ToDoCtrl', ["user", "admin"]);
 Utils::addRoute('markCompleted', 'ToDoCtrl', ["user", "admin"]);
 Utils::addRoute('removeTask', 'ToDoCtrl', ["user", "admin"]);
-Utils::addRoute('cleardata', 'DataCtrl', ["admin"]);
+
+//Image ToDoCtrl
+Utils::addRoute('showImages', 'ImageToDoCtrl', ["user", "admin"]);
+Utils::addRoute('addImage', 'ImageToDoCtrl', ["user", "admin"]);
+Utils::addRoute('removeImage', 'ImageToDoCtrl', ["user", "admin"]);
