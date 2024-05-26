@@ -12,9 +12,11 @@ use core\App;
 
 class ToDoCtrl
 {
+
+    private $messages;
     public function __construct()
     {
-
+        $this->messages = new Messages();
     }
 
     public function readFromDB()
@@ -36,6 +38,7 @@ class ToDoCtrl
 
     public function action_showTasks()
     {
+        //pobierz dane z bazy danych
         $this->readFromDB();
         //wygeneruj widok
         $this->generateView();
@@ -55,7 +58,7 @@ class ToDoCtrl
             "Description" => $task,
             "Date" => $date
         ]);
-
+        //przekierowanie do URL uniemożliwia wyświetlanie komunikatów :(
         // Przekieruj na stronę wyświetlającą zadania, żeby przy odświeżeniu nie dublować dodanych zadań
         App::getRouter()->redirectTo("showTasks");
     }

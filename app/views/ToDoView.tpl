@@ -1,4 +1,5 @@
 {extends file="Main.tpl"}
+{include file="MessageModal.tpl"}
 
 {block name=contentToDo}
     <section id="app" class="todo-container">

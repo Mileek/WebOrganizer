@@ -3,13 +3,13 @@
 use core\App;
 use core\Utils;
 
-App::getRouter()->setDefaultRoute('generateView'); #default action
+App::getRouter()->setDefaultRoute('generateLoginView'); #default action
 // App::getRouter()->setDefaultRoute('hello'); #default action
 //App::getRouter()->setLoginRoute('accessdenied'); #action to forward if no permissions
 //App::getRouter()->setLoginRoute('login'); #action to forward if no permissions
 
 //Login
-Utils::addRoute('generateView', 'LoginCtrl');
+Utils::addRoute('generateLoginView', 'LoginCtrl');
 Utils::addRoute('login', 'LoginCtrl');
 Utils::addRoute('logout', 'LoginCtrl');
 

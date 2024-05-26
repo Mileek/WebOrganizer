@@ -1,42 +1,45 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-05-26 14:02:29
+/* Smarty version 4.3.4, created on 2024-05-26 15:52:11
   from 'C:\xampp\htdocs\WebOrganizer\app\views\ToDoView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_665324d5dc4443_78016115',
+  'unifunc' => 'content_66533e8b27e172_41290959',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b3de89403d11c7afe65af1c92edf74c44491d093' => 
     array (
       0 => 'C:\\xampp\\htdocs\\WebOrganizer\\app\\views\\ToDoView.tpl',
-      1 => 1716724855,
+      1 => 1716731527,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:MessageModal.tpl' => 1,
   ),
 ),false)) {
-function content_665324d5dc4443_78016115 (Smarty_Internal_Template $_smarty_tpl) {
+function content_66533e8b27e172_41290959 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 ?>
 
+<?php $_smarty_tpl->_subTemplateRender("file:MessageModal.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
 <?php 
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_342614196665324d5dac410_69225145', 'contentToDo');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_193425990266533e8b266544_83040374', 'contentToDo');
 $_smarty_tpl->inheritance->endChild($_smarty_tpl, "Main.tpl");
 }
 /* {block 'contentToDo'} */
-class Block_342614196665324d5dac410_69225145 extends Smarty_Internal_Block
+class Block_193425990266533e8b266544_83040374 extends Smarty_Internal_Block
 {
 public $subBlocks = array (
   'contentToDo' => 
   array (
-    0 => 'Block_342614196665324d5dac410_69225145',
+    0 => 'Block_193425990266533e8b266544_83040374',
   ),
 );
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
