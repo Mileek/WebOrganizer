@@ -2,38 +2,37 @@
 
 namespace app\controllers;
 
-use app\transfer\User;
-use app\forms\LoginForm;
+use app\forms\ToDoForm;
 use \core\ParamUtils;
 use \core\Messages;
-use \core\Message;
-use core\RoleUtils;
 use core\App;
 
 class ToDoCtrl
 {
 
     private $messages;
+    private $todoForm;
     public function __construct()
     {
         $this->messages = new Messages();
+        $this->todoForm = new ToDoForm();
     }
 
-    public function readFromDB()
+    private function readFromDB()
     {
         // Pobierz wszystkie dane z bazy danych
         $records = App::getDB()->select("tasks", "*");
 
-        $total = count($records);
-        $completed = count(array_filter($records, function ($record) {
+        $this->todoForm->total = count($records);
+        $this->todoForm->completed = count(array_filter($records, function ($record) {
             return $record['IsCompleted'] == true;
         }));
-        $incomplete = $total - $completed;
+        $this->todoForm->incompleted = $this->todoForm->total - $this->todoForm->completed;
 
         App::getSmarty()->assign('data', $records);
-        App::getSmarty()->assign('total', $total);
-        App::getSmarty()->assign('completed', $completed);
-        App::getSmarty()->assign('incomplete', $incomplete);
+        App::getSmarty()->assign('total', $this->todoForm->total);
+        App::getSmarty()->assign('completed', $this->todoForm->completed);
+        App::getSmarty()->assign('incomplete', $this->todoForm->incompleted);
     }
 
     public function action_showTasks()
@@ -43,20 +42,21 @@ class ToDoCtrl
         //wygeneruj widok
         $this->generateView();
     }
-    public function generateView()
+
+    private function generateView()
     {
         App::getSmarty()->display('ToDoView.tpl');
     }
 
     public function action_addTask()
     {
-        $task = ParamUtils::getFromRequest('task');
-        $date = date("Y-m-d H:i:s");
+        $this->todoForm->task = ParamUtils::getFromRequest('task');
+        $this->todoForm->date = date("Y-m-d H:i:s");
 
         App::getDB()->insert("tasks", [
             "IsCompleted" => false,
-            "Description" => $task,
-            "Date" => $date
+            "Description" => $this->todoForm->task,
+            "Date" => $this->todoForm->date
         ]);
         //przekierowanie do URL uniemożliwia wyświetlanie komunikatów :(
         // Przekieruj na stronę wyświetlającą zadania, żeby przy odświeżeniu nie dublować dodanych zadań
@@ -65,16 +65,16 @@ class ToDoCtrl
 
     public function action_markCompleted()
     {
-        $id = ParamUtils::getFromRequest('id');
-        $currentComplete = ParamUtils::getFromRequest('currentComplete');
+        $this->todoForm->id = ParamUtils::getFromRequest('id');
+        $this->todoForm->currentCompleted = ParamUtils::getFromRequest('currentComplete');
 
         // Konwertuj string "0" lub "1" na boolean
-        $currentComplete = (bool) $currentComplete;
+        $this->todoForm->currentCompleted = (bool) $this->todoForm->currentCompleted;
 
         App::getDB()->update("tasks", [
-            "IsCompleted" => !$currentComplete,
+            "IsCompleted" => !$this->todoForm->currentCompleted,
         ], [
-            "id" => $id
+            "id" => $this->todoForm->id
         ]);
 
         // Przekieruj na stronę wyświetlającą zadania, żeby przy odświeżeniu nie dublować dodanych zadań
@@ -83,10 +83,10 @@ class ToDoCtrl
 
     public function action_removeTask()
     {
-        $id = ParamUtils::getFromRequest('id');
+        $this->todoForm->id = ParamUtils::getFromRequest('id');
 
         App::getDB()->delete("tasks", [
-            "id" => $id
+            "id" => $this->todoForm->id
         ]);
 
         // Przekieruj na stronę wyświetlającą zadania, żeby przy odświeżeniu nie dublować dodanych zadań

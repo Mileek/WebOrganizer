@@ -2,12 +2,9 @@
 
 namespace app\controllers;
 
-use app\transfer\User;
 use app\forms\LoginForm;
-use \core\ParamUtils;
 use \core\Messages;
 use \core\Message;
-use core\RoleUtils;
 use core\App;
 use core\Validator;
 
@@ -28,7 +25,7 @@ class RegisterCtrl
         App::getSmarty()->display('RegisterView.tpl');
     }
 
-    public function validateFromDB()
+    private function checkLogins()
     {
         $userNames = App::getDB()->select("users", "*", [
             "UserName" => $this->form->login,
@@ -38,7 +35,9 @@ class RegisterCtrl
         if ($userExists != 0) {
             $this->messages->addMessage(new Message('User with this username already exists', Message::ERROR));
         }
-
+    }
+    private function checkEmails()
+    {
         $userEmails = App::getDB()->select("users", "*", [
             "Email" => $this->form->email,
         ]);
@@ -48,11 +47,15 @@ class RegisterCtrl
             $this->messages->addMessage(new Message('User with this email already exists', Message::ERROR));
         }
     }
+    private function validateFromDB()
+    {
+        $this->checkLogins();
+        $this->checkEmails();
+    }
 
     public function action_createUser()
     {
         $this->validateAndAssign();
-
         $this->validateFromDB();
 
         if ($this->messages->isError() || $this->messages->isInfo() || $this->messages->isWarning()) {
@@ -107,15 +110,10 @@ class RegisterCtrl
 
     public function InsertToDB()
     {
-
         App::getDB()->insert("users", [
             "UserName" => $this->form->login,
             "Password" => $this->form->pass,
             "Email" => $this->form->email
         ]);
-
     }
-
-
-
 }

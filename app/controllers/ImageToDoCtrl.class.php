@@ -2,71 +2,72 @@
 
 namespace app\controllers;
 
-use app\transfer\User;
-use app\forms\LoginForm;
+
+use app\forms\ToDoImageForm;
 use \core\ParamUtils;
 use \core\Messages;
-use \core\Message;
-use core\RoleUtils;
 use core\App;
 
 class ImageToDoCtrl
 {
     private $messages;
+    private $todoImageForm;
     public function __construct()
     {
-
         $this->messages = new Messages();
+        $this->todoImageForm = new ToDoImageForm();
     }
 
-    public function readFromDB()
+    private function readFromDB()
     {
         // Pobierz wszystkie dane z bazy danych
         $records = App::getDB()->select("images", "*");
 
-        $total = count($records);
+        $this->todoImageForm->total = count($records);
         App::getSmarty()->assign('data', $records);
-        App::getSmarty()->assign('total', $total);
+        App::getSmarty()->assign('total', $this->todoImageForm->total);
     }
 
     public function action_showImages()
     {
+        //odczytaj dane z bazy i przypisz do smarty
         $this->readFromDB();
         //wygeneruj widok
         $this->generateView();
     }
-    public function generateView()
+    private function generateView()
     {
         App::getSmarty()->display('ImageToDoView.tpl');
     }
 
     public function action_addImage()
     {
-        $url = ParamUtils::getFromRequest('url');
-        $date = date("Y-m-d H:i:s");
+        $this->insertToDB();
 
-        App::getDB()->insert("images", [
-            "Url" => $url,
-            "Date" => $date
-        ]);
-
-
-        $this->messages->addMessage(new Message('Image added', Message::INFO));
-        App::getSmarty()->assign('msgs', $this->messages);
-        // Przekieruj na stronę wyświetlającą zadania, żeby przy odświeżeniu nie dublować dodanych zadań
+        //Przekieruj na stronę wyświetlającą zadania, żeby przy odświeżeniu nie dublować dodanych zadań
         App::getRouter()->redirectTo("showImages");
     }
 
     public function action_removeImage()
     {
-        $id = ParamUtils::getFromRequest('id');
+        $this->todoImageForm->id = ParamUtils::getFromRequest('id');
 
         App::getDB()->delete("images", [
-            "id" => $id
+            "id" => $this->todoImageForm->id
         ]);
 
         // Przekieruj na stronę wyświetlającą zadania, żeby przy odświeżeniu nie dublować dodanych zadań
         App::getRouter()->redirectTo("showImages");
     }
 
+    private function insertToDB()
+    {
+        $this->todoImageForm->url = ParamUtils::getFromRequest('url');
+        $this->todoImageForm->date = date("Y-m-d H:i:s");
+
+        App::getDB()->insert("images", [
+            "Url" => $this->todoImageForm->url,
+            "Date" => $this->todoImageForm->date
+        ]);
+    }
 }

@@ -10,6 +10,8 @@
     <script src="https://kit.fontawesome.com/0eabfb7d9f.js" crossorigin="anonymous"></script>
 </head>
 
+{include file="MessageModal.tpl"}
+
 <body>
     <div>
         <nav class="navi">
@@ -21,8 +23,6 @@
             <form action="{$conf->action_url}showImages">
                 <button class="navi__button">Images</button>
             </form>
-            <form action="{$conf->action_url}showTasks"></form>
-            <button class="navi__button">PlaceHolder</button>
             <form action="{$conf->action_url}logout">
                 <button class="navi__button">Logout</button>
             </form>

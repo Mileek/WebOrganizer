@@ -2,7 +2,6 @@
 
 namespace app\controllers;
 
-use app\transfer\User;
 use app\forms\LoginForm;
 use \core\ParamUtils;
 use \core\Messages;
@@ -22,14 +21,14 @@ class LoginCtrl
         $this->messages = new Messages();
     }
 
-    public function getParams()
+    private function getParams()
     {
-        // 1. pobranie parametrów
+        // pobranie parametrów
         $this->form->login = ParamUtils::getFromRequest('login');
         $this->form->pass = ParamUtils::getFromRequest('password');
     }
 
-    public function validate()
+    private function validate()
     {
         // sprawdzenie, czy parametry zostały przekazane
         if (!(isset($this->form->login) && isset($this->form->pass))) {
@@ -51,7 +50,7 @@ class LoginCtrl
         }
 
         if (!$this->messages->isError()) {
-
+            //sprawdzanie czy user albo email istnieje w bazie, bo użytkownik może się zarówno loginować po emailu jak i po nazwie użytkownika
             $user = App::getDB()->select("users", "*", [
                 "OR" => [
                     "UserName" => $this->form->login,
@@ -75,7 +74,7 @@ class LoginCtrl
     {
         $this->generateView();
     }
-    public function generateView()
+    private function generateView()
     {
         App::getSmarty()->display("LoginView.tpl");
     }
@@ -85,10 +84,10 @@ class LoginCtrl
         $this->getParams();
 
         if ($this->validate()) {
-            //zalogowany => przekieruj na stronę główną, gdzie uruchomiona zostanie domyślna akcja
+            //zalogowany to przekieruj na stronę główną, gdzie uruchomiona zostanie domyślna akcja
             App::getRouter()->redirectTo("showTasks");
         } else {
-            //niezalogowany => wyświetl stronę logowania
+            //niezalogowany to wyświetl stronę logowania
             $this->messages->addMessage(new Message('Incorrect login and/or password', Message::ERROR));
         }
         if ($this->messages->isError() || $this->messages->isInfo() || $this->messages->isWarning()) {

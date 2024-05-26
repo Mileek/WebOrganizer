@@ -4,9 +4,6 @@ use core\App;
 use core\Utils;
 
 App::getRouter()->setDefaultRoute('generateLoginView'); #default action
-// App::getRouter()->setDefaultRoute('hello'); #default action
-//App::getRouter()->setLoginRoute('accessdenied'); #action to forward if no permissions
-//App::getRouter()->setLoginRoute('login'); #action to forward if no permissions
 
 //Login
 Utils::addRoute('generateLoginView', 'LoginCtrl');
@@ -16,7 +13,6 @@ Utils::addRoute('logout', 'LoginCtrl');
 //Register User
 Utils::addRoute('register', 'RegisterCtrl');
 Utils::addRoute('createUser', 'RegisterCtrl');
-
 
 //ToDoCtrl
 Utils::addRoute('showTasks', 'ToDoCtrl', ["user", "admin"]);

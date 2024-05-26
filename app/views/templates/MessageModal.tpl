@@ -1,4 +1,4 @@
-<!-- Modal -->
+<!-- Modal, w pełni obsługiwany przez bootstrappa -->
 <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -10,6 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
+                <!-- Wyświetlanie komunikatów, specjalnie nie połączone || aby było lepiej czytelne -->
                 {if $msgs->isError()}
                     {foreach $msgs->getMessages() as $msg}
                         <p>{$msg->text}</p>

@@ -8,8 +8,9 @@
 }
 
 .todo-headline {
-  background-color: #1249a1;
-  color: #fff;
+  background-color: #032760;
+  font-weight: bold;
+  color: #fff;;
   text-align: center;
   text-transform: uppercase;
   padding-top: 5px;
@@ -94,18 +95,18 @@
 .todo-toggle {
   color: #aaaaaa;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 32px;
   width: 40px;
   height: 40px;
   position: relative;
-  top: 18px;
+  top: 16px;
   z-index: 2;
   background: transparent;
   border: none;
 }
 
 .todo-toggle {
-  left: 20px;
+  left: 10px;
 }
 
 .todo-toggle-all.on {
@@ -160,7 +161,7 @@
 }
 
 .todo-footer {
-  background-color: #eaeaea;
+  background-color: #08d3b8;
 }
 
 .todo-stats {
@@ -173,4 +174,18 @@
   width: 150px;
 }
 
-/*# sourceMappingURL=ToDoStyle.css.map */
+.todo-image{
+  max-width: 40vw;
+  max-height: 40vh;
+}
+
+@keyframes slideInFromTop {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(0); }
+}
+
+.todo-headline,
+.todo-container,
+.todo-footer {
+  animation: slideInFromTop 0.5s ease-in-out;
+}
