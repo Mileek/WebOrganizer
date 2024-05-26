@@ -6,4 +6,5 @@ class LoginForm
 {
     public $login;
     public $pass;
+    public $email;
 }
