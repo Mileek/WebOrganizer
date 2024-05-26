@@ -12,9 +12,11 @@ use core\App;
 
 class ImageToDoCtrl
 {
+    private $messages;
     public function __construct()
     {
 
+        $this->messages = new Messages();
     }
 
     public function readFromDB()
@@ -48,6 +50,9 @@ class ImageToDoCtrl
             "Date" => $date
         ]);
 
+
+        $this->messages->addMessage(new Message('Image added', Message::INFO));
+        App::getSmarty()->assign('msgs', $this->messages);
         // Przekieruj na stronę wyświetlającą zadania, żeby przy odświeżeniu nie dublować dodanych zadań
         App::getRouter()->redirectTo("showImages");
     }

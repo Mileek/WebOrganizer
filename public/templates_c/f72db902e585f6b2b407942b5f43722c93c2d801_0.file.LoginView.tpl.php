@@ -1,26 +1,27 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-05-26 12:28:38
+/* Smarty version 4.3.4, created on 2024-05-26 14:43:43
   from 'C:\xampp\htdocs\WebOrganizer\app\views\LoginView.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_66530ed6955b21_97063112',
+  'unifunc' => 'content_66532e7f1f7f84_32106382',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f72db902e585f6b2b407942b5f43722c93c2d801' => 
     array (
       0 => 'C:\\xampp\\htdocs\\WebOrganizer\\app\\views\\LoginView.tpl',
-      1 => 1716719316,
+      1 => 1716727194,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:MessageModal.tpl' => 1,
   ),
 ),false)) {
-function content_66530ed6955b21_97063112 (Smarty_Internal_Template $_smarty_tpl) {
+function content_66532e7f1f7f84_32106382 (Smarty_Internal_Template $_smarty_tpl) {
 ?><head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
@@ -28,7 +29,12 @@ function content_66530ed6955b21_97063112 (Smarty_Internal_Template $_smarty_tpl)
     <?php echo '<script'; ?>
  src="https://kit.fontawesome.com/0eabfb7d9f.js" crossorigin="anonymous"><?php echo '</script'; ?>
 >
+    <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['conf']->value->app_url;?>
+/../node_modules/bootstrap/dist/css/bootstrap.min.css" />
 </head>
+
+<?php $_smarty_tpl->_subTemplateRender("file:MessageModal.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
 <div class="container">
     <div class="screen">

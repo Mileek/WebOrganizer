@@ -71,7 +71,11 @@ class LoginCtrl
         return !$this->messages->isError();
     }
 
-    public function action_generateView()
+    public function action_generateLoginView()
+    {
+        $this->generateView();
+    }
+    public function generateView()
     {
         App::getSmarty()->display("LoginView.tpl");
     }
@@ -85,10 +89,12 @@ class LoginCtrl
             App::getRouter()->redirectTo("showTasks");
         } else {
             //niezalogowany => wyświetl stronę logowania
-            $this->action_generateView();
             $this->messages->addMessage(new Message('Incorrect login and/or password', Message::ERROR));
         }
-
+        if ($this->messages->isError() || $this->messages->isInfo() || $this->messages->isWarning()) {
+            App::getSmarty()->assign('msgs', $this->messages);
+            $this->generateView();
+        }
     }
 
     public function action_logout()
@@ -97,8 +103,9 @@ class LoginCtrl
         session_destroy();
 
         // 2. wyświetl stronę logowania z informacją
-        $this->messages->addMessage(new Message('Successfully logged out of the ToDo', Message::INFO));
+        $this->messages->addMessage(new Message('You have successfully logged out. See you soon', Message::ERROR));
+        App::getSmarty()->assign('msgs', $this->messages);
 
-        App::getRouter()->redirectTo("generateView");
+        $this->generateView();
     }
 }

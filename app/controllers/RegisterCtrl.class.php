@@ -55,9 +55,12 @@ class RegisterCtrl
 
         $this->validateFromDB();
 
-        if (!$this->messages->isError()) {
+        if ($this->messages->isError() || $this->messages->isInfo() || $this->messages->isWarning()) {
+            App::getSmarty()->assign('msgs', $this->messages);
+            App::getSmarty()->display('RegisterView.tpl');
+        } else {
             $this->InsertToDB();
-            App::getRouter()->redirectTo("generateView");
+            App::getRouter()->redirectTo("generateLoginView");
         }
     }
 

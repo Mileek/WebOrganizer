@@ -2,7 +2,10 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="{$conf->app_url}/../assets/LoginStyle.css" />
     <script src="https://kit.fontawesome.com/0eabfb7d9f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{$conf->app_url}/../node_modules/bootstrap/dist/css/bootstrap.min.css" />
 </head>
+
+{include file="MessageModal.tpl"}
 
 <div class="container">
     <div class="screen">
@@ -26,7 +29,7 @@
                         <i class="button__icon fas fa-chevron-right"></i>
                     </button>
                 </form>
-                <form action="{$conf->action_url}generateView">
+                <form action="{$conf->action_url}generateLoginView">
                     <button class="button login__submit">
                         <span class="button__text">Return to login</span>
                         <i class="button__icon fas fa-chevron-right"></i>
